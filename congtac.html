@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlashLight</title>
+</head>
+<body>
+<script>
+    //tao den
+    let FlashLight = function (status) {
+        this.status = true;
+        this.turnOn = function () {
+            this.status = true;
+            document.write("turn On"+"<br>");
+        }
+        this.turnOff = function () {
+            this.status = false;
+            document.write("Turn Off"+"<br>");
+        }
+    };
+    // tao cong tac
+    let SwitchButton = function (flash) {
+        this.flash = flash;
+        this.status = true;
+        this.connectToLamp = function (flash) {
+            this.flash = flash;
+        }
+        this.switchOff = function () {
+            this.flash.turnOff();
+        }
+        this.switchOn = function () {
+            this.flash.turnOn();
+        }
+    };
+    let lamp = new FlashLight();
+    let congTac = new SwitchButton();
+    congTac.connectToLamp(lamp);
+    for (let i =0; i<10;i++){
+        congTac.switchOff();
+        congTac.switchOn();
+    }
+</script>
+</body>
+</html>
